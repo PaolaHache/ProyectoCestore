@@ -1,28 +1,21 @@
 package principal;
 
 public class Usuario {
-    public static void main(String[] args) {
 
-        System.out.println("Declarar atributos básicos");
+        //Atributos básicos
 
-        String nombre = "Yanis";
-        String apellido = "Correa";
-        String email = "yaniscorrea@gmail.com";
-        String pais = "Uruguay";
-        String perfil = "administrador";
-
-        System.out.println("Nombre: " + nombre);
-        System.out.println("Apellido: " + apellido);
-        System.out.println("Email: " + email);
-        System.out.println("Pais: " + pais);
-        System.out.println("Perfil: " + perfil);
+        String nombre;
+        String apellido;
+        String email;
+        String pais;
+        String perfil;
 
 
 
 
         //Funcionalidad, descripción y datos solicitados
 
-       // Login. Iniciar sesión como administrador. Email y contraseña
+        // Login. Iniciar sesión como administrador. Email y contraseña
         // Reiniciar contraseña. Recuperar cuenta. Email, contraseña y repetir contraseña
         // Crear cuenta administrador. Dar alta de cuenta para administrador. Nombre, apellido, email, contraseña, repetir contraseña y país de nacimiento
         // Crear cuenta tester. Dar alta de cuenta para tester. Nombre, apellido, email, país de nacimiento, contraseña por defecto y rango (tester junior, tester senior, tester líder)
