@@ -11,6 +11,6 @@ Gestión de cuentas
 
 Gestión de usuarios
 - Ver usuarios: Ver usuarios registrados (Nombre, Apellido, Email, País, Perfil (Tester Junior/Senior/Líder o Administrador)
-  -- Eliminar usuarios: Eliminar usuarios registrados en el sistema (Aceptar o Cancelar)
+- (Derivado del anterior) Eliminar usuarios: Eliminar usuarios registrados en el sistema (Aceptar o Cancelar)
 - Ver perfil de usuario: Ver detalles del perfil (Nombre, Apellido, Email, País, Perfil)
-  -- Modificar datos de perfil de usuario: Cambiar detalles del perfil (Nombre, Apellido, Email, País, Perfil)
+- (Derivado del anterior) Modificar datos de perfil de usuario: Cambiar detalles del perfil (Nombre, Apellido, Email, País, Perfil)
