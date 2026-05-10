@@ -1,19 +1,16 @@
 Funcionalidad, descripción y datos solicitados
 
-1. Login. Iniciar sesión como administrador. Email y contraseña
+Autenticación
+- Login: Iniciar sesión como administrador (Email y Contraseña)
+- Reiniciar contraseña: Recuperar cuenta (Email, Contraseña y Repetir contraseña)
+- Logout: Cerrar sesión (Sí o Cancelar)
 
-2. Reiniciar contraseña. Recuperar cuenta. Email, contraseña y repetir contraseña
+Gestión de cuentas
+- Crear cuenta administrador: Dar alta de cuenta con Nombre, Apellido, Email, Contraseña, Repetir contraseña y País de nacimiento
+- Crear cuenta tester: Dar alta de cuenta con Nombre, Apellido, Email, País de nacimiento, Contraseña por defecto y Perfil (Tester Junior, Tester Senior, Tester Líder)
 
-3. Crear cuenta administrador. Dar alta de cuenta para administrador. Nombre, apellido, email, contraseña, repetir contraseña y país de nacimiento
-
-4. Crear cuenta tester. Dar alta de cuenta para tester. Nombre, apellido, email, país de nacimiento, contraseña por defecto y rango (tester junior, tester senior, tester líder)
-
-5. Ver usuarios. Ver usuarios registrados. Nombre, apellido, email, país, perfil (rango de tester o administrador)
-
-5.1. Eliminar usuarios. Eliminar usuarios registrados en el sistema. Aceptar o cancelar
-
-6. Ver perfil de usuario. Ver detalles del perfil. Nombre, apellido, email, país, perfil
-
-6.1. Modificar datos de perfil de usuario. Cambiar detalles del perfil. Nombre, apellido, email, país, perfil
-
-7. Logout. Cerrar sesión. Sí o cancelar
+Gestión de usuarios
+- Ver usuarios: Ver usuarios registrados (Nombre, Apellido, Email, País, Perfil (Tester Junior/Senior/Líder o Administrador)
+  -- Eliminar usuarios: Eliminar usuarios registrados en el sistema (Aceptar o Cancelar)
+- Ver perfil de usuario: Ver detalles del perfil (Nombre, Apellido, Email, País, Perfil)
+  -- Modificar datos de perfil de usuario: Cambiar detalles del perfil (Nombre, Apellido, Email, País, Perfil)
