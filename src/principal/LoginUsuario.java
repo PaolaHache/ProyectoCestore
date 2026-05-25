@@ -19,7 +19,7 @@ public class LoginUsuario {
             System.out.println("1. Login");
             System.out.println("2. Registro de administrador");
             System.out.println("3. Salir");
-            System.out.print("Seleccione una opción: ");
+            System.out.print("Seleccione una opción válida: ");
             opcion = scanner.nextInt();
             scanner.nextLine(); // limpiar buffer
 
@@ -31,7 +31,7 @@ public class LoginUsuario {
                     registrarUsuario();
                     break;
                 case 3:
-                    System.out.println("Saliendo del sistema...");
+                    System.out.println("Salida exitosa del sistema...");
                     break;
                 default:
                     System.out.println("Opción inválida");
