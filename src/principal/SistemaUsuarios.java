@@ -11,7 +11,7 @@ public class SistemaUsuarios {
         usuarios = new ArrayList<>();
         scanner = new Scanner(System.in);
 
-        // Usuarios precargados
+        // Precargados
         usuarios.add(new Usuario("Yanis", "Correa", "yaniscorrea@gmail.com", "Uruguay", "ADMIN", "12345"));
         usuarios.add(new Usuario("Leonardo", "Pérez", "leonardoperez@gmail.com", "Uruguay", "ADMIN", "12345"));
     }
@@ -25,12 +25,12 @@ public class SistemaUsuarios {
             System.out.println("3. Salir");
             System.out.print("Seleccione una opción válida: ");
             opcion = scanner.nextInt();
-            scanner.nextLine(); // limpiar buffer
+            scanner.nextLine();
 
             switch (opcion) {
                 case 1 -> loginUsuario();
                 case 2 -> registrarUsuario();
-                case 3 -> System.out.println("Salida exitosa del sistema...");
+                case 3 -> System.out.println("Salida exitosa...");
                 default -> System.out.println("Opción inválida");
             }
         } while (opcion != 3);
@@ -52,10 +52,7 @@ public class SistemaUsuarios {
                 break;
             }
         }
-
-        if (!acceso) {
-            System.out.println("Credenciales incorrectas");
-        }
+        if (!acceso) System.out.println("Credenciales incorrectas");
     }
 
     private void registrarUsuario() {
@@ -67,7 +64,6 @@ public class SistemaUsuarios {
         System.out.print("Email: ");
         String email = scanner.nextLine();
 
-        // Validar si ya existe
         for (Usuario u : usuarios) {
             if (u.getEmail().equals(email)) {
                 System.out.println("Error: el usuario ya existe.");
@@ -79,7 +75,6 @@ public class SistemaUsuarios {
         String password = scanner.nextLine();
         System.out.print("Repetir contraseña: ");
         String repetir = scanner.nextLine();
-
         if (!password.equals(repetir)) {
             System.out.println("Error: las contraseñas no coinciden.");
             return;
