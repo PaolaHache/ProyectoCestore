@@ -12,8 +12,9 @@ public class SistemaUsuarios {
         scanner = new Scanner(System.in);
 
         // Precargados
-        usuarios.add(new Usuario("Yanis", "Correa", "yaniscorrea@gmail.com", "Uruguay", "ADMIN", "12345"));
-        usuarios.add(new Usuario("Leonardo", "Pérez", "leonardoperez@gmail.com", "Uruguay", "ADMIN", "12345"));
+        usuarios.add(new Admin("Yanis", "Correa", "yaniscorrea@gmail.com", "Uruguay", "12345"));
+        usuarios.add(new Admin("Leonardo", "Pérez", "leonardoperez@gmail.com", "Uruguay", "12345"));
+        usuarios.add(new Tester("Paola", "Gómez", "paolagomez@gmail.com", "Uruguay", "abcde"));
     }
 
     public void mostrarMenu() {
@@ -21,7 +22,7 @@ public class SistemaUsuarios {
         do {
             System.out.println("\n===== MENÚ PRINCIPAL =====");
             System.out.println("1. Login");
-            System.out.println("2. Registro de administrador");
+            System.out.println("2. Registro de usuario");
             System.out.println("3. Salir");
             System.out.print("Seleccione una opción válida: ");
             opcion = scanner.nextInt();
@@ -56,7 +57,7 @@ public class SistemaUsuarios {
     }
 
     private void registrarUsuario() {
-        System.out.println("=== Registro de Administrador ===");
+        System.out.println("=== Registro de Usuario ===");
         System.out.print("Nombre: ");
         String nombre = scanner.nextLine();
         System.out.print("Apellido: ");
@@ -83,8 +84,19 @@ public class SistemaUsuarios {
         System.out.print("País: ");
         String pais = scanner.nextLine();
 
-        Usuario nuevo = new Usuario(nombre, apellido, email, pais, "ADMIN", password);
+        // Aquí integrás la parte nueva
+        System.out.print("Tipo de usuario (1=Admin, 2=Tester): ");
+        int tipo = scanner.nextInt();
+        scanner.nextLine();
+
+        Usuario nuevo;
+        if (tipo == 1) {
+            nuevo = new Admin(nombre, apellido, email, pais, password);
+        } else {
+            nuevo = new Tester(nombre, apellido, email, pais, password);
+        }
         usuarios.add(nuevo);
+
         System.out.println("Usuario registrado correctamente.");
     }
 }
