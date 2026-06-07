@@ -23,7 +23,6 @@ Diagrama UML
 mermaid
 
 
-
 class Usuario
 — nombre : String
 — apellido : String
