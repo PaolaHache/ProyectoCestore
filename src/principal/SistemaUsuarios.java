@@ -14,7 +14,7 @@ public class SistemaUsuarios {
         // Precargados
         usuarios.add(new Admin("Yanis", "Correa", "yaniscorrea@gmail.com", "Uruguay", "12345"));
         usuarios.add(new Admin("Leonardo", "Pérez", "leonardoperez@gmail.com", "Uruguay", "12345"));
-        usuarios.add(new Tester("Paola", "Gómez", "paolagomez@gmail.com", "Uruguay", "abcde"));
+        usuarios.add(new Tester("Paola", "Holzmann", "paola291187@gmail.com", "Uruguay", "Abcde"));
     }
 
     public void mostrarMenu() {
@@ -84,7 +84,6 @@ public class SistemaUsuarios {
         System.out.print("País: ");
         String pais = scanner.nextLine();
 
-        // Aquí integrás la parte nueva
         System.out.print("Tipo de usuario (1=Admin, 2=Tester): ");
         int tipo = scanner.nextInt();
         scanner.nextLine();
