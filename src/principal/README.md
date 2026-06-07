@@ -19,24 +19,24 @@ Gestión de usuarios
 VC3 – Modelado con POO
 
 Clases principales
-- **Usuario**  
+- Usuario  
   Clase base con atributos privados, getters/setters y constructor.  
   Método `mostrarInfo()` para imprimir datos básicos.
 
-- **Admin**  
+- Admin  
   Subclase que hereda de `Usuario`.  
   Sobreescribe `mostrarInfo()` para mostrar rol de administrador.
 
-- **Tester**  
+- Tester  
   Subclase que hereda de `Usuario`.  
   Sobreescribe `mostrarInfo()` para mostrar rol de tester.
 
-- **SistemaUsuarios**  
+- SistemaUsuarios  
   Contiene un arreglo de usuarios (`Usuario[]` o `ArrayList<Usuario>`).  
   Métodos: `loginUsuario()`, `registrarUsuario()`, `mostrarMenu()`.  
   Precarga usuarios de prueba.
 
-- **Main**  
+- Main  
   Clase principal que arranca el sistema y muestra el menú.
 
 ---
