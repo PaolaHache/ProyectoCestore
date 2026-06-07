@@ -1,6 +1,7 @@
 package principal;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class SistemaUsuarios {
@@ -18,15 +19,22 @@ public class SistemaUsuarios {
     }
 
     public void mostrarMenu() {
-        int opcion;
+        int opcion = 0;
         do {
             System.out.println("\n===== MENÚ PRINCIPAL =====");
             System.out.println("1. Login");
             System.out.println("2. Registro de usuario");
             System.out.println("3. Salir");
             System.out.print("Seleccione una opción válida: ");
-            opcion = scanner.nextInt();
-            scanner.nextLine();
+
+            try {
+                opcion = scanner.nextInt();
+                scanner.nextLine();
+            } catch (InputMismatchException e) {
+                System.out.println("Opción inválida. Ingrese un número.");
+                scanner.nextLine(); // limpiar buffer
+                continue;
+            }
 
             switch (opcion) {
                 case 1 -> loginUsuario();
@@ -53,7 +61,7 @@ public class SistemaUsuarios {
                 break;
             }
         }
-        if (!acceso) System.out.println("Credenciales incorrectas");
+        if (!acceso) System.out.println("Credenciales incorrectas.");
     }
 
     private void registrarUsuario() {
@@ -85,17 +93,27 @@ public class SistemaUsuarios {
         String pais = scanner.nextLine();
 
         System.out.print("Tipo de usuario (1=Admin, 2=Tester): ");
-        int tipo = scanner.nextInt();
-        scanner.nextLine();
+        int tipo;
+        try {
+            tipo = scanner.nextInt();
+            scanner.nextLine();
+        } catch (InputMismatchException e) {
+            System.out.println("Tipo inválido. Se registrará como Tester por defecto.");
+            scanner.nextLine();
+            tipo = 2;
+        }
 
         Usuario nuevo;
         if (tipo == 1) {
             nuevo = new Admin(nombre, apellido, email, pais, password);
+        } else if (tipo == 2) {
+            nuevo = new Tester(nombre, apellido, email, pais, password);
         } else {
+            System.out.println("Tipo inválido. Se registrará como Tester por defecto.");
             nuevo = new Tester(nombre, apellido, email, pais, password);
         }
-        usuarios.add(nuevo);
 
+        usuarios.add(nuevo);
         System.out.println("Usuario registrado correctamente.");
     }
 }
