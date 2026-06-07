@@ -18,43 +18,50 @@ Gestión de usuarios
 
 VC3 – Modelado con POO
 
-Diagrama UML
+```mermaid
+classDiagram
+    class Usuario {
+        - String nombre
+        - String apellido
+        - String email
+        - String pais
+        - String perfil
+        - String password
+        + getNombre() String
+        + getApellido() String
+        + getEmail() String
+        + getPais() String
+        + getPerfil() String
+        + getPassword() String
+        + setNombre() void
+        + setApellido() void
+        + mostrarInfo() void
+    }
 
-mermaid
+    class Admin {
+        - String nivelAcceso
+        + getNivelAcceso() String
+        + setNivelAcceso() void
+        + mostrarInfo() void
+    }
 
+    class Tester {
+        - String areaAsignada
+        + getAreaAsignada() String
+        + setAreaAsignada() void
+        + mostrarInfo() void
+    }
 
-class Usuario
-— nombre : String
-— apellido : String
-— email : String
-— pais : String
-— perfil : String
-— password : String
-+ getNombre() : String
-+ getApellido() : String
-+ getEmail() : String
-+ getPais() : String
-+ getPerfil() : String
-+ getPassword() : String
-+ setNombre(), setApellido(), …
-+ mostrarInfo() : void
+    class SistemaUsuarios {
+        - ArrayList~Usuario~ usuarios
+        + mostrarMenu() void
+        - loginUsuario() void
+        - registrarUsuario() void
+    }
 
-class Admin
-— nivelAcceso : String
-+ getNivelAcceso() : String
-+ setNivelAcceso() : void
-+ mostrarInfo() : void
-
-class Tester
-— areaAsignada : String
-+ getAreaAsignada() : String
-+ setAreaAsignada() : void
-+ mostrarInfo() : void
-
-class SistemaUsuarios 
-— usuarios : ArrayList<Usuario>
-+ mostrarMenu() : void
-– loginUsuario() : void
-– registrarUsuario() : void
+    Usuario <|-- Admin
+    Usuario <|-- Tester
+    SistemaUsuarios "1" --> "*" Usuario
+```
 
 
