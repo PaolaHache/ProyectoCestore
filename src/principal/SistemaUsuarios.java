@@ -12,7 +12,7 @@ public class SistemaUsuarios {
         usuarios = new ArrayList<>();
         scanner = new Scanner(System.in);
 
-        // Precargados
+        // Usuarios precargados
         usuarios.add(new Admin("Yanis", "Correa", "yaniscorrea@gmail.com", "Uruguay", "12345"));
         usuarios.add(new Admin("Leonardo", "Pérez", "leonardoperez@gmail.com", "Uruguay", "12345"));
         usuarios.add(new Tester("Paola", "Holzmann", "paola291187@gmail.com", "Uruguay", "Abcde"));
@@ -34,7 +34,7 @@ public class SistemaUsuarios {
                 scanner.nextLine();
             } catch (InputMismatchException e) {
                 System.out.println("Opción inválida. Ingrese un número.");
-                scanner.nextLine(); // limpiar buffer
+                scanner.nextLine();
                 continue;
             }
 
@@ -61,7 +61,7 @@ public class SistemaUsuarios {
         if (u != null && u.getPassword().equals(inputContrasena)) {
             System.out.println("Login exitoso");
             u.mostrarInfo();
-            u.accionEspecial(); // polimorfismo
+            u.accionEspecial();
         } else {
             System.out.println("Credenciales incorrectas.");
         }
@@ -137,7 +137,6 @@ public class SistemaUsuarios {
         }
     }
 
-    // Para evitar la duplicación
     private Usuario buscarPorEmail(String email) {
         for (Usuario u : usuarios) {
             if (u.getEmail().equals(email)) {

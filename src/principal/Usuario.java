@@ -33,7 +33,7 @@ public abstract class Usuario {
     public void setPerfil(String perfil) { this.perfil = perfil; }
     public void setPassword(String password) { this.password = password; }
 
-    // Métodos abstractos
+    // Abstracciones
     public abstract void mostrarInfo();
     public abstract void accionEspecial();
 }

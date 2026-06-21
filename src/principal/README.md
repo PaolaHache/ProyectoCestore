@@ -65,7 +65,7 @@ classDiagram
 ```
 
 
-VC 4 Diagrama UML
+VC 4 Actualización del diagrama UML
 
 ```mermaid
 classDiagram
