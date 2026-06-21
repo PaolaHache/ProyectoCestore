@@ -16,4 +16,9 @@ public class Tester extends Usuario {
     public void mostrarInfo() {
         System.out.println("TESTER: " + getNombre() + " - " + getEmail() + " | Área: " + areaAsignada);
     }
+
+    @Override
+    public void accionEspecial() {
+        System.out.println("Ejecutando pruebas y reportando bugs...");
+    }
 }

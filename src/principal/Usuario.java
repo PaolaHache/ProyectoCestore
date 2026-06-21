@@ -1,6 +1,6 @@
 package principal;
 
-public class Usuario {
+public abstract class Usuario {
     private String nombre;
     private String apellido;
     private String email;
@@ -33,7 +33,7 @@ public class Usuario {
     public void setPerfil(String perfil) { this.perfil = perfil; }
     public void setPassword(String password) { this.password = password; }
 
-    public void mostrarInfo() {
-        System.out.println(nombre + " " + apellido + " - " + email + " (" + pais + ") Perfil: " + perfil);
-    }
+    // Métodos abstractos
+    public abstract void mostrarInfo();
+    public abstract void accionEspecial();
 }

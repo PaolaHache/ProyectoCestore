@@ -25,6 +25,8 @@ public class SistemaUsuarios {
             System.out.println("1. Login");
             System.out.println("2. Registro de usuario");
             System.out.println("3. Salir");
+            System.out.println("4. Listar usuarios");
+            System.out.println("5. Buscar usuario");
             System.out.print("Seleccione una opción válida: ");
 
             try {
@@ -40,6 +42,8 @@ public class SistemaUsuarios {
                 case 1 -> loginUsuario();
                 case 2 -> registrarUsuario();
                 case 3 -> System.out.println("Salida exitosa...");
+                case 4 -> listarUsuarios();
+                case 5 -> buscarUsuario();
                 default -> System.out.println("Opción inválida");
             }
         } while (opcion != 3);
@@ -52,16 +56,15 @@ public class SistemaUsuarios {
         System.out.print("Contraseña: ");
         String inputContrasena = scanner.nextLine();
 
-        boolean acceso = false;
-        for (Usuario u : usuarios) {
-            if (u.getEmail().equals(inputEmail) && u.getPassword().equals(inputContrasena)) {
-                System.out.println("Login exitoso");
-                u.mostrarInfo();
-                acceso = true;
-                break;
-            }
+        Usuario u = buscarPorEmail(inputEmail);
+
+        if (u != null && u.getPassword().equals(inputContrasena)) {
+            System.out.println("Login exitoso");
+            u.mostrarInfo();
+            u.accionEspecial(); // polimorfismo
+        } else {
+            System.out.println("Credenciales incorrectas.");
         }
-        if (!acceso) System.out.println("Credenciales incorrectas.");
     }
 
     private void registrarUsuario() {
@@ -73,11 +76,9 @@ public class SistemaUsuarios {
         System.out.print("Email: ");
         String email = scanner.nextLine();
 
-        for (Usuario u : usuarios) {
-            if (u.getEmail().equals(email)) {
-                System.out.println("Error: el usuario ya existe.");
-                return;
-            }
+        if (buscarPorEmail(email) != null) {
+            System.out.println("Error: el usuario ya existe.");
+            return;
         }
 
         System.out.print("Contraseña: ");
@@ -106,14 +107,43 @@ public class SistemaUsuarios {
         Usuario nuevo;
         if (tipo == 1) {
             nuevo = new Admin(nombre, apellido, email, pais, password);
-        } else if (tipo == 2) {
-            nuevo = new Tester(nombre, apellido, email, pais, password);
         } else {
-            System.out.println("Tipo inválido. Se registrará como Tester por defecto.");
             nuevo = new Tester(nombre, apellido, email, pais, password);
         }
 
         usuarios.add(nuevo);
         System.out.println("Usuario registrado correctamente.");
+    }
+
+    // Nueva funcionalidad 1: Listar usuarios
+    private void listarUsuarios() {
+        System.out.println("=== Lista de Usuarios ===");
+        for (Usuario u : usuarios) {
+            u.mostrarInfo();
+        }
+    }
+
+    // Nueva funcionalidad 2: Buscar usuario por email
+    private void buscarUsuario() {
+        System.out.print("Ingrese email a buscar: ");
+        String email = scanner.nextLine();
+
+        Usuario u = buscarPorEmail(email);
+        if (u != null) {
+            System.out.println("Usuario encontrado:");
+            u.mostrarInfo();
+        } else {
+            System.out.println("No se encontró usuario con ese email.");
+        }
+    }
+
+    // Para evitar la duplicación
+    private Usuario buscarPorEmail(String email) {
+        for (Usuario u : usuarios) {
+            if (u.getEmail().equals(email)) {
+                return u;
+            }
+        }
+        return null;
     }
 }

@@ -16,4 +16,9 @@ public class Admin extends Usuario {
     public void mostrarInfo() {
         System.out.println("ADMIN: " + getNombre() + " - " + getEmail() + " | Acceso: " + nivelAcceso);
     }
+
+    @Override
+    public void accionEspecial() {
+        System.out.println("Gestionando usuarios y configuraciones...");
+    }
 }

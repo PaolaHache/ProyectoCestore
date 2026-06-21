@@ -65,3 +65,65 @@ classDiagram
 ```
 
 
+VC 4 Diagrama UML
+
+```mermaid
+classDiagram
+    class Usuario {
+        -nombre : String
+        -apellido : String
+        -email : String
+        -pais : String
+        -perfil : String
+        -password : String
+        +Usuario(nombre, apellido, email, pais, perfil, password)
+        +getNombre() : String
+        +getApellido() : String
+        +getEmail() : String
+        +getPais() : String
+        +getPerfil() : String
+        +getPassword() : String
+        +setNombre(nombre : String) : void
+        +setApellido(apellido : String) : void
+        +setEmail(email : String) : void
+        +setPais(pais : String) : void
+        +setPerfil(perfil : String) : void
+        +setPassword(password : String) : void
+        <<abstract>>
+        +mostrarInfo() : void
+        +accionEspecial() : void
+    }
+
+    class Admin {
+        -nivelAcceso : String
+        +Admin(nombre, apellido, email, pais, password)
+        +getNivelAcceso() : String
+        +setNivelAcceso(nivelAcceso : String) : void
+        +mostrarInfo() : void
+        +accionEspecial() : void
+    }
+
+    class Tester {
+        -areaAsignada : String
+        +Tester(nombre, apellido, email, pais, password)
+        +getAreaAsignada() : String
+        +setAreaAsignada(areaAsignada : String) : void
+        +mostrarInfo() : void
+        +accionEspecial() : void
+    }
+
+    class SistemaUsuarios {
+        -usuarios : ArrayList<Usuario>
+        -scanner : Scanner
+        +SistemaUsuarios()
+        +mostrarMenu() : void
+        -loginUsuario() : void
+        -registrarUsuario() : void
+        -listarUsuarios() : void
+        -buscarUsuario() : void
+        -buscarPorEmail(email : String) : Usuario
+    }
+
+    Usuario <|-- Admin
+    Usuario <|-- Tester
+    SistemaUsuarios --> Usuario
