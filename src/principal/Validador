@@ -1,0 +1,46 @@
+package principal;
+
+import excepciones.DatosInvalidosException;
+import java.util.regex.Pattern;
+
+/**
+ * Clase utilitaria encargada exclusivamente de validar datos de entrada.
+ * Separa la lógica de validación del resto del sistema (Single Responsibility).
+ */
+public final class Validador {
+
+    private static final int PASSWORD_LONGITUD_MINIMA = 6;
+
+    private static final Pattern EMAIL_PATTERN =
+            Pattern.compile("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$");
+
+    // Clase utilitaria: no debe instanciarse
+    private Validador() {
+    }
+
+    public static void validarCampoObligatorio(String valor, String nombreCampo)
+            throws DatosInvalidosException {
+        if (valor == null || valor.trim().isEmpty()) {
+            throw new DatosInvalidosException("El campo '" + nombreCampo + "' es obligatorio y no puede estar vacío.");
+        }
+    }
+
+    public static void validarEmail(String email) throws DatosInvalidosException {
+        validarCampoObligatorio(email, "Email");
+        if (!EMAIL_PATTERN.matcher(email.trim()).matches()) {
+            throw new DatosInvalidosException("El email '" + email + "' no tiene un formato válido.");
+        }
+    }
+
+    public static void validarPassword(String password) throws DatosInvalidosException {
+        validarCampoObligatorio(password, "Contraseña");
+        if (password.length() < PASSWORD_LONGITUD_MINIMA) {
+            throw new DatosInvalidosException(
+                    "La contraseña debe tener al menos " + PASSWORD_LONGITUD_MINIMA + " caracteres.");
+        }
+    }
+
+    public static int getPasswordLongitudMinima() {
+        return PASSWORD_LONGITUD_MINIMA;
+    }
+}
