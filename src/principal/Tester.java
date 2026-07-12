@@ -5,7 +5,7 @@ public class Tester extends Usuario {
     private String nivelTester; // Junior, Senior o Líder
 
     public Tester(String nombre, String apellido, String email, String pais, String password) {
-        super(nombre, apellido, email, pais, "TESTER", password);
+        super(nombre, apellido, email, pais, password);
         this.nivelTester = "Junior";
     }
 
@@ -14,7 +14,7 @@ public class Tester extends Usuario {
 
     @Override
     public void mostrarInfo() {
-        System.out.println("TESTER: " + getNombre() + " - " + getEmail() + " | Nivel: " + nivelTester);
+        System.out.println("TESTER: " + getNombre() + " " + getApellido() + " - " + getEmail() + " | Nivel: " + nivelTester);
     }
 
     @Override
