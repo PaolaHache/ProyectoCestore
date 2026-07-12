@@ -1,6 +1,3 @@
-<pre>
-## Diagrama UML
-
 ```mermaid
 classDiagram
     class Usuario {
