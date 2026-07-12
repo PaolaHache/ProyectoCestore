@@ -1,0 +1,64 @@
+package principal;
+
+import excepciones.EmailDuplicadoException;
+import excepciones.UsuarioNoEncontradoException;
+
+import java.util.Collection;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+/**
+ * Repositorio único de usuarios del sistema.
+ * Implementa el patrón Singleton: existe una sola instancia compartida,
+ * evitando tener colecciones de usuarios inconsistentes entre distintas
+ * partes del programa.
+ *
+ * Se encarga exclusivamente del almacenamiento y recuperación de usuarios
+ * (separación de responsabilidades: SistemaUsuarios ya no maneja la colección
+ * directamente).
+ *
+ * Se usa un Map<email, Usuario> en lugar de una lista para que la búsqueda
+ * y la detección de duplicados por email sea O(1) en vez de recorrer toda
+ * la colección.
+ */
+public class UsuarioRepositorio {
+
+    private static UsuarioRepositorio instancia;
+
+    private final Map<String, Usuario> usuariosPorEmail;
+
+    private UsuarioRepositorio() {
+        usuariosPorEmail = new LinkedHashMap<>(); // preserva el orden de alta
+    }
+
+    public static UsuarioRepositorio getInstance() {
+        if (instancia == null) {
+            instancia = new UsuarioRepositorio();
+        }
+        return instancia;
+    }
+
+    public void agregar(Usuario usuario) throws EmailDuplicadoException {
+        String emailNormalizado = usuario.getEmail().toLowerCase();
+        if (usuariosPorEmail.containsKey(emailNormalizado)) {
+            throw new EmailDuplicadoException(usuario.getEmail());
+        }
+        usuariosPorEmail.put(emailNormalizado, usuario);
+    }
+
+    public Usuario buscarPorEmail(String email) throws UsuarioNoEncontradoException {
+        Usuario u = usuariosPorEmail.get(email == null ? null : email.trim().toLowerCase());
+        if (u == null) {
+            throw new UsuarioNoEncontradoException(email);
+        }
+        return u;
+    }
+
+    public boolean existeEmail(String email) {
+        return email != null && usuariosPorEmail.containsKey(email.trim().toLowerCase());
+    }
+
+    public Collection<Usuario> listarTodos() {
+        return usuariosPorEmail.values();
+    }
+}

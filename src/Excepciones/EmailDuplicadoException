@@ -1,0 +1,12 @@
+javapackage excepciones;
+
+/**
+ * Se lanza al intentar registrar un usuario con un email
+ * que ya pertenece a otro usuario del sistema.
+ */
+public class EmailDuplicadoException extends Exception {
+
+    public EmailDuplicadoException(String email) {
+        super("Ya existe un usuario registrado con el email: " + email);
+    }
+}

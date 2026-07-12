@@ -1,0 +1,12 @@
+package excepciones;
+
+/**
+ * Se lanza cuando se intenta buscar, autenticar u operar sobre
+ * un usuario cuyo email no existe en el sistema.
+ */
+public class UsuarioNoEncontradoException extends Exception {
+
+    public UsuarioNoEncontradoException(String email) {
+        super("No se encontró ningún usuario registrado con el email: " + email);
+    }
+}
