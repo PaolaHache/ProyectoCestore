@@ -1,7 +1,7 @@
 javapackage excepciones;
 
 /**
- * Se lanza al intentar registrar un usuario con un email
+ * Se aplica al intentar registrar un usuario con un email
  * que ya pertenece a otro usuario del sistema.
  */
 public class EmailDuplicadoException extends Exception {

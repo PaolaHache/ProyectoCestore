@@ -1,7 +1,7 @@
 package excepciones;
 
 /**
- * Se lanza cuando se intenta buscar, autenticar u operar sobre
+ * Se aplica cuando se intenta buscar, autenticar u operar sobre
  * un usuario cuyo email no existe en el sistema.
  */
 public class UsuarioNoEncontradoException extends Exception {
