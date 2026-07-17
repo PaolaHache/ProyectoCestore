@@ -7,20 +7,6 @@ import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-/**
- * Repositorio único de usuarios del sistema.
- * Implementa el patrón Singleton: existe una sola instancia compartida,
- * evitando tener colecciones de usuarios inconsistentes entre distintas
- * partes del programa.
- *
- * Se encarga exclusivamente del almacenamiento y recuperación de usuarios
- * (separación de responsabilidades: SistemaUsuarios ya no maneja la colección
- * directamente).
- *
- * Se usa un Map<email, Usuario> en lugar de una lista para que la búsqueda
- * y la detección de duplicados por email sea O(1) en vez de recorrer toda
- * la colección.
- */
 public class UsuarioRepositorio {
 
     private static UsuarioRepositorio instancia;
